@@ -4,10 +4,14 @@ import pandas as pd
 from scipy.cluster.hierarchy import dendrogram, linkage
 
 # Read JSON File
-json = pd.read_json("data.json")
+# dataJson = pd.read_json("data.json")
+# Convert to CSV
+# dataJson.to_csv("data.csv")
+
+dataJson = pd.read_csv("data.csv")
 
 # gabungin nilai x dan y
-data = list(zip(json['x'], json['y']))
+data = list(zip(dataJson['x'], dataJson['y']))
 
 # Input dari Program
 # x = [2, 3, 2, 2, 1, 3, 4, 6, 5, 4]
@@ -24,5 +28,5 @@ data = list(zip(json['x'], json['y']))
 # 7. ward
 linkage_data = linkage(data, method='single', metric='euclidean')
 dendrogram(linkage_data)
-
+plt.title("Grafik Dendogram", fontweight="bold")
 plt.show()
